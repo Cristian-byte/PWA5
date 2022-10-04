@@ -8,7 +8,19 @@ self.addEventListener('install', event => {
 
     console.log('SW: Instalando SW');
 
-    self.skipWaiting();
+    //self.skipWaiting();
+
+    const instalacion = new Promise((resulve, reject) => {
+        setTimeout(() => {
+            console.log('SW: Instalaciones terminadass');
+            self.skipWaiting();
+            resolve();
+        }, 1000);
+
+    });
+
+    event.waitUntil(instalacion);
+
 });
 
 //Cuando el SW toma el control de la plicacion 
@@ -16,5 +28,6 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
 
     //Borrar cache viejo
-    console.log('SW: Activo y Listo para controlar la app');
+    console.log('SW2: Activo y Listo para controlar la app');
+
 });
